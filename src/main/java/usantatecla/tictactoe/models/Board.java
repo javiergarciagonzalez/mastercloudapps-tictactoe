@@ -1,18 +1,18 @@
 package usantatecla.tictactoe.models;
 
+import usantatecla.utils.Direction;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import usantatecla.utils.Direction;
 
 class Board {
 
     private Token[][] tokens;
 
-    public Board(){
+    public Board() {
         this.reset();
     }
-    
+
     void reset() {
         this.tokens = new Token[Coordinate.DIMENSION][Coordinate.DIMENSION];
         for (int i = 0; i < Coordinate.DIMENSION; i++) {
@@ -37,7 +37,7 @@ class Board {
                 }
             }
         }
-        return tokensCount == Coordinate.DIMENSION*2;
+        return tokensCount == Coordinate.DIMENSION * 2;
     }
 
     void put(Coordinate coordinate, Token token) {
@@ -82,15 +82,14 @@ class Board {
             return false;
         }
         Direction previous = null;
-        for (int i = 0; i < Coordinate.DIMENSION-1; i++) {
+        for (int i = 0; i < Coordinate.DIMENSION - 1; i++) {
             Direction actual = coordinates.get(i).getDirection(coordinates.get(i + 1));
             if (i == 0) {
-                if (actual == Direction.NULL){
+                if (actual == Direction.NULL) {
                     return false;
                 }
-            } else 
-                if (actual != previous) {
-                    return false;
+            } else if (actual != previous) {
+                return false;
             }
             previous = actual;
         }

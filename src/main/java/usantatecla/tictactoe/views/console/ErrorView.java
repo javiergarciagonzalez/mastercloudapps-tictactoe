@@ -8,9 +8,9 @@ class ErrorView extends usantatecla.tictactoe.views.ErrorView {
     ErrorView(Error error) {
         super(error);
     }
-    
+
     void writeln() {
-        if (!error.isNull()){
+        if (!error.isNull()) {
             Console.getInstance().writeln(ErrorView.MESSAGES[this.error.ordinal()]);
         }
     }

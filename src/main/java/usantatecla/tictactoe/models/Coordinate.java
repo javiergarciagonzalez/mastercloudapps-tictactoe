@@ -1,18 +1,14 @@
 package usantatecla.tictactoe.models;
 
-import java.util.Random;
-
-import usantatecla.tictactoe.types.Error;
-import usantatecla.utils.ClosedInterval;
 import usantatecla.utils.ConcreteCoordinate;
 import usantatecla.utils.Direction;
 
+import java.util.Random;
+
 public class Coordinate extends ConcreteCoordinate {
 
-    static final Coordinate NULL_COORDINATE = new Coordinate(); 
     public static final int DIMENSION = 3;
-    static final ClosedInterval LIMITS = 
-        new ClosedInterval(0, Coordinate.DIMENSION - 1);
+    static final Coordinate NULL_COORDINATE = new Coordinate();
 
     public Coordinate() {
         super();
@@ -27,18 +23,11 @@ public class Coordinate extends ConcreteCoordinate {
         return this == Coordinate.NULL_COORDINATE;
     }
 
-    public Error isValid() {
-        if (!LIMITS.isIncluded(this.row) || !LIMITS.isIncluded(this.column)){
-            return Error.NOT_VALID;
-        }
-        return Error.NULL;
-    }
-    
     @Override
     public Direction getDirection(usantatecla.utils.Coordinate coordinate) {
         assert coordinate != null;
 
-        if (coordinate.isNull()){
+        if (coordinate.isNull()) {
             return Direction.NULL;
         }
         if (this.inInverseDiagonal() && ((Coordinate) coordinate).inInverseDiagonal()) {
@@ -48,7 +37,7 @@ public class Coordinate extends ConcreteCoordinate {
     }
 
     boolean inInverseDiagonal() {
-        if (this.isNull()){
+        if (this.isNull()) {
             return false;
         }
         return this.row + this.column == Coordinate.DIMENSION - 1;
@@ -69,7 +58,7 @@ public class Coordinate extends ConcreteCoordinate {
         if (getClass() != obj.getClass())
             return false;
         Coordinate other = (Coordinate) obj;
-        if (this.isNull() || other.isNull()){
+        if (this.isNull() || other.isNull()) {
             return false;
         }
         return super.equals(other);

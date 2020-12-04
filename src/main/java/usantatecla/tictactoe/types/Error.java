@@ -8,7 +8,7 @@ public enum Error {
     NOT_VALID,
     NULL;
 
-    public boolean isNull(){
+    public boolean isNull() {
         return this == Error.NULL;
     }
 

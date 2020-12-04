@@ -18,7 +18,7 @@ public class TokenTest {
     }
 
     @Test
-    void testGivenXTokenWhenToStringThenIsX(){
+    void testGivenXTokenWhenToStringThenIsX() {
         assertThat(Token.X.toString(), is("X"));
     }
 

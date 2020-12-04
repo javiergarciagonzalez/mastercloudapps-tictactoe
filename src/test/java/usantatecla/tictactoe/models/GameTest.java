@@ -17,8 +17,8 @@ public class GameTest {
     @Test
     void testGivenCompleteBoardGameWhenIsBoardCompleteThenIsTrue() {
         Game game = new GameBuilder().rows("XXX",
-                                           "OOO",
-                                           "   ").build();
+                "OOO",
+                "   ").build();
         assertThat(game.isBoardComplete(), is(true));
     }
 
@@ -37,8 +37,8 @@ public class GameTest {
     @Test
     void testGivenOneUserGameAndFirstPlayerPlayWhenIsUserThenIsFalse() {
         Game game = new GameBuilder().users(1).rows("X  ",
-                                                    "   ",
-                                                    "   ").build();
+                "   ",
+                "   ").build();
         assertThat(game.isUser(), is(false));
     }
 
@@ -57,8 +57,8 @@ public class GameTest {
     @Test
     void testGivenGameWithXTokenInBoardWhenPutCoordinateInXTokenCoordinateThenIsNotEmptyError() {
         Game game = new GameBuilder().rows("X  ",
-                                           "   ",
-                                           "   ").build();
+                "   ",
+                "   ").build();
         assertThat(game.put(new Coordinate(0, 0)), is(Error.NOT_EMPTY));
     }
 
@@ -71,32 +71,32 @@ public class GameTest {
     @Test
     void testGivenGameWithTokenInBoardWhenMoveNotOwnTokenThenIsNotOwnerError() {
         Game game = new GameBuilder().rows("X  ",
-                                           "   ",
-                                           "   ").build();
+                "   ",
+                "   ").build();
         assertThat(game.move(new Coordinate(0, 0), new Coordinate(0, 1)), is(Error.NOT_OWNER));
     }
 
     @Test
     void testGivenGameWithTokenInBoardWhenMoveOwnTokenThenIsNullError() {
         Game game = new GameBuilder().rows("X  ",
-                                           "O  ",
-                                           "   ").build();
+                "O  ",
+                "   ").build();
         assertThat(game.move(new Coordinate(0, 0), new Coordinate(0, 1)), is(Error.NULL));
     }
 
     @Test
     void testGivenGameWithTokenInBoardWhenMoveOwnTokenToOccupiedCoordinateThenIsNotEmptyError() {
         Game game = new GameBuilder().rows("XO ",
-                                           "   ",
-                                           "   ").build();
+                "   ",
+                "   ").build();
         assertThat(game.move(new Coordinate(0, 0), new Coordinate(0, 1)), is(Error.NOT_EMPTY));
     }
 
     @Test
     void testGivenGameWithTokenInBoardWhenMoveOwnTokenToSameCoordinateThenIsSameCoordinateError() {
         Game game = new GameBuilder().rows("XO ",
-                                           "   ",
-                                           "   ").build();
+                "   ",
+                "   ").build();
         Coordinate coordinate = new Coordinate(0, 0);
         assertThat(game.move(coordinate, coordinate), is(Error.SAME_COORDINATES));
     }
@@ -110,32 +110,32 @@ public class GameTest {
     @Test
     void testGivenHorizontalTicTacToeGameWhenIsTicTacToeThenIsTrue() {
         Game game = new GameBuilder().rows("XXX",
-                                           "OO ",
-                                           "   ").build();
+                "OO ",
+                "   ").build();
         assertThat(game.isTicTacToe(), is(true));
     }
 
     @Test
     void testGivenVerticalTicTacToeGameWhenIsTicTacToeThenIsTrue() {
         Game game = new GameBuilder().rows("XOO",
-                                           "X  ",
-                                           "X  ").build();
+                "X  ",
+                "X  ").build();
         assertThat(game.isTicTacToe(), is(true));
     }
 
     @Test
     void testGivenDiagonalTicTacToeGameWhenIsHorizontalTicTacToeThenIsTrue() {
         Game game = new GameBuilder().rows("XO ",
-                                           "OX ",
-                                           "  X").build();
+                "OX ",
+                "  X").build();
         assertThat(game.isTicTacToe(), is(true));
     }
 
     @Test
     void testGivenInvertedDiagonalTicTacToeGameWhenIsHorizontalTicTacToeThenIsTrue() {
         Game game = new GameBuilder().rows(" OX",
-                                           " XO",
-                                           "X  ").build();
+                " XO",
+                "X  ").build();
         assertThat(game.isTicTacToe(), is(true));
     }
 
@@ -148,8 +148,8 @@ public class GameTest {
     @Test
     void testGivenGameWithXTokenWhenGetTokenThenIsOToken() {
         Game game = new GameBuilder().rows("X  ",
-                                           "   ",
-                                           "   ").build();
+                "   ",
+                "   ").build();
         assertThat(game.getToken(), is(Token.O));
     }
 
@@ -162,18 +162,18 @@ public class GameTest {
     @Test
     void testGivenGameWithXTokenWhenGetTokenCoordinateThenIsXToken() {
         Game game = new GameBuilder().rows("X  ",
-                                           "   ",
-                                           "   ").build();
+                "   ",
+                "   ").build();
         assertThat(game.getToken(new Coordinate(0, 0)), is(Token.X));
     }
 
     @Test
     void testGivenGameWithOTokenWhenGetTokenCoordinateThenIsOToken() {
         Game game = new GameBuilder().rows("X O",
-                                           "X O",
-                                           "   ").build();
-        System.out.println(game.getToken(new Coordinate(0,0)));
-        System.out.println(game.getToken(new Coordinate(1,2)));
+                "X O",
+                "   ").build();
+        System.out.println(game.getToken(new Coordinate(0, 0)));
+        System.out.println(game.getToken(new Coordinate(1, 2)));
         assertThat(game.getToken(new Coordinate(1, 2)), is(Token.O));
     }
 
@@ -186,8 +186,8 @@ public class GameTest {
     @Test
     void testGivenNewGameWhenEqualsThenIsTrue() {
         Game game = new GameBuilder().users(2).rows("XO ",
-                                                    " X ",
-                                                    "   ").build();
+                " X ",
+                "   ").build();
         assertThat(game.equals(game), is(true));
     }
 

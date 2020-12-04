@@ -2,10 +2,10 @@ package usantatecla.utils;
 
 public class ConcreteCoordinate implements Coordinate {
 
-    protected int row;
-    protected int column;
     static final String ROW = "Row: ";
     static final String COLUMN = "Column: ";
+    protected int row;
+    protected int column;
 
     protected ConcreteCoordinate() {
     }
@@ -34,14 +34,14 @@ public class ConcreteCoordinate implements Coordinate {
     }
 
     public boolean inHorizontal(Coordinate coordinate) {
-        if (coordinate.isNull()){
+        if (coordinate.isNull()) {
             return false;
         }
         return this.row == ((ConcreteCoordinate) coordinate).row;
     }
 
     public boolean inVertical(Coordinate coordinate) {
-        if (coordinate.isNull()){
+        if (coordinate.isNull()) {
             return false;
         }
         return this.column == ((ConcreteCoordinate) coordinate).column;

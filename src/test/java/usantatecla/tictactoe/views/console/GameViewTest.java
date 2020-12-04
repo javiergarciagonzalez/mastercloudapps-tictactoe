@@ -7,7 +7,6 @@ import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.tictactoe.controllers.Controller;
 import usantatecla.tictactoe.models.Coordinate;
-import usantatecla.tictactoe.models.Game;
 import usantatecla.tictactoe.models.Token;
 import usantatecla.tictactoe.views.Message;
 import usantatecla.utils.Console;
@@ -50,8 +49,8 @@ public class GameViewTest {
             verify(this.console, times(3)).writeln(Message.VERTICAL_LINE_RIGHT.toString());
             verify(this.console, times(21)).write(captor.capture());
             assertThat(captor.getAllValues().toString(), is("[| , X,  | , X,  | , X,  | , " +
-                                                                   "| , X,  | , X,  | , X,  | , " +
-                                                                   "| , X,  | , X,  | , X,  | ]"));
+                    "| , X,  | , X,  | , X,  | , " +
+                    "| , X,  | , X,  | , X,  | ]"));
         }
     }
 

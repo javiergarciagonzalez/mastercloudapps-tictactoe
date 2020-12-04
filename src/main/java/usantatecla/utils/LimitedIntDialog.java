@@ -2,16 +2,16 @@ package usantatecla.utils;
 
 public class LimitedIntDialog {
 
-    private final ClosedInterval LIMITS;
     private static final String ERROR_MESSAGE = "Invalid number";
+    private final ClosedInterval LIMITS;
 
-    public LimitedIntDialog(int min, int max){
+    public LimitedIntDialog(int min, int max) {
         this.LIMITS = new ClosedInterval(min, max);
     }
 
     public int read(String message) {
         assert message != null;
-        
+
         boolean error;
         int value;
         do {
@@ -20,8 +20,8 @@ public class LimitedIntDialog {
             if (error) {
                 Console.getInstance().writeln(LimitedIntDialog.ERROR_MESSAGE);
             }
-        } while(error);
+        } while (error);
         return value;
     }
-    
+
 }

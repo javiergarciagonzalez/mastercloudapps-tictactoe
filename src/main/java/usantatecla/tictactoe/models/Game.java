@@ -3,10 +3,10 @@ package usantatecla.tictactoe.models;
 import usantatecla.tictactoe.types.Error;
 
 public class Game {
-    
+
     private Board board;
     private Turn turn;
-    
+
     public Game() {
         this.reset();
     }
@@ -29,7 +29,7 @@ public class Game {
     }
 
     public Error put(Coordinate coordinate) {
-        Error error =  this.turn.put(coordinate);
+        Error error = this.turn.put(coordinate);
         next(error);
         return error;
     }
@@ -53,7 +53,7 @@ public class Game {
     public Token getToken(Coordinate coordinate) {
         return this.board.getToken(coordinate);
     }
-    
+
     public Token getToken() {
         return this.turn.getToken();
     }

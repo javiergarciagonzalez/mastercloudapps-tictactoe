@@ -7,7 +7,7 @@ public class TokenView {
 
     private Token token;
 
-    TokenView(Token token){
+    TokenView(Token token) {
         this.token = token;
     }
 

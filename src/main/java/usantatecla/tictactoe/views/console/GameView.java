@@ -10,8 +10,8 @@ class GameView {
     private Controller controller;
 
     GameView(Controller controller) {
-    this.controller = controller;
-  }
+        this.controller = controller;
+    }
 
     void write() {
         Console.getInstance().writeln(Message.SEPARATOR.toString());

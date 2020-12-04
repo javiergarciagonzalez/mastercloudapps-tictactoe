@@ -29,9 +29,7 @@ class Player {
         }
         if (origin.equals(target)) {
             return Error.SAME_COORDINATES;
-        }
-
-        else if (!this.board.isEmpty(target)) {
+        } else if (!this.board.isEmpty(target)) {
             return Error.NOT_EMPTY;
         }
         this.board.move(origin, target);

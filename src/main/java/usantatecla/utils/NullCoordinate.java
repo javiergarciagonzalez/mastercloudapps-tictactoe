@@ -3,25 +3,26 @@ package usantatecla.utils;
 public class NullCoordinate implements Coordinate {
 
     public static NullCoordinate instance;
-    
+
     public static Coordinate instance() {
         if (NullCoordinate.instance == null) {
             NullCoordinate.instance = new NullCoordinate();
         }
-        return NullCoordinate.instance; 
+        return NullCoordinate.instance;
     }
-    
+
     @Override
     public boolean isNull() {
         return true;
     }
-    
+
     @Override
     public Direction getDirection(Coordinate coordinate) {
         assert coordinate != null;
 
         return Direction.NULL;
     }
+
     @Override
     public boolean inHorizontal(Coordinate coordinate) {
         assert coordinate != null;
@@ -61,5 +62,5 @@ public class NullCoordinate implements Coordinate {
     public String toString() {
         return "NullCoordinate []";
     }
-    
+
 }

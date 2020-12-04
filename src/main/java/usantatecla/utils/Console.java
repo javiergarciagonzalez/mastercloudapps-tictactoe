@@ -6,15 +6,14 @@ import java.io.InputStreamReader;
 public class Console {
 
     public static Console console;
-    
+    private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
     public static Console getInstance() {
         if (Console.console == null) {
             Console.console = new Console();
         }
         return Console.console;
     }
-    
-    private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
     public String readString(String title) {
         String input = null;
