@@ -1,6 +1,6 @@
 package usantatecla.tictactoe.types;
 
-public enum State {
+public enum StateValue {
     INITIAL,
     IN_GAME,
     RESUME,
