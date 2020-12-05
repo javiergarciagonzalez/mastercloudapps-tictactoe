@@ -8,7 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.tictactoe.controllers.PlayController;
+
+import usantatecla.tictactoe.controllers.Logic;
 import usantatecla.tictactoe.types.Error;
 import usantatecla.utils.Console;
 
@@ -22,10 +23,10 @@ import static org.mockito.MockitoAnnotations.openMocks;
 public class CoordinateViewTest {
 
     @Mock
-    private Console console;
+    private Logic logic;
 
     @Mock
-    private PlayController playController;
+    private Console console;
 
     @InjectMocks
     private CoordinateView coordinateView;
@@ -39,7 +40,7 @@ public class CoordinateViewTest {
     void testGivenNewCoordinateViewWhenReadCoordinateThenReturnCoordinate() {
         try (MockedStatic console = mockStatic(Console.class)) {
             when(this.console.readInt(anyString())).thenReturn(1);
-            when(this.playController.isValidCoordinate(any(int[].class))).thenReturn(Error.NULL);
+            when(this.logic.isValidCoordinate(any(int[].class))).thenReturn(Error.NULL);
             console.when(Console::getInstance).thenReturn(this.console);
             int[] coordinate = this.coordinateView.read("");
             verify(this.console).writeln("");
@@ -51,7 +52,7 @@ public class CoordinateViewTest {
     void testGivenNewCoordinateViewWhenReadInvalidCoordinateThenReadValidCoordinateAndReturnValidCoordinate() {
         try (MockedStatic console = mockStatic(Console.class)) {
             when(this.console.readInt(anyString())).thenReturn(4, 1);
-            when(this.playController.isValidCoordinate(any(int[].class))).thenReturn(Error.NOT_VALID, Error.NULL);
+            when(this.logic.isValidCoordinate(any(int[].class))).thenReturn(Error.NOT_VALID, Error.NULL);
             console.when(Console::getInstance).thenReturn(this.console);
             int[] coordinate = this.coordinateView.read("");
             verify(this.console, times(2)).writeln("");

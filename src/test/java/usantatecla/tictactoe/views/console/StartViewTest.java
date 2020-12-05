@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import usantatecla.tictactoe.controllers.StartController;
+import usantatecla.tictactoe.controllers.Logic;
 import usantatecla.tictactoe.models.Coordinate;
 import usantatecla.tictactoe.types.Token;
 import usantatecla.tictactoe.views.Message;
@@ -21,7 +21,7 @@ import static org.mockito.MockitoAnnotations.openMocks;
 public class StartViewTest {
 
     @Mock
-    private StartController startController;
+    private Logic logic;
 
     @InjectMocks
     private StartView startView;
@@ -38,12 +38,12 @@ public class StartViewTest {
     void testGivenNewStartViewWhenReadNumberOfUsersThenGameSetNumberOfUsers() {
         try (MockedStatic console = mockStatic(Console.class)) {
             when(this.console.readInt(anyString())).thenReturn(1);
-            when(this.startController.getMaxPlayers()).thenReturn(2);
-            when(this.startController.getToken(any(Coordinate.class))).thenReturn(Token.X);
+            when(this.logic.getMaxPlayers()).thenReturn(2);
+            when(this.logic.getToken(any(Coordinate.class))).thenReturn(Token.X);
             console.when(Console::getInstance).thenReturn(this.console);
             this.startView.interact();
             verify(this.console).writeln(Message.TITLE.toString());
-            verify(this.startController).setUsers(1);
+            verify(this.logic).setUsers(1);
         }
     }
 }

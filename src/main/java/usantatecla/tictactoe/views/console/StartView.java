@@ -1,25 +1,25 @@
 package usantatecla.tictactoe.views.console;
 
-import usantatecla.tictactoe.controllers.StartController;
+import usantatecla.tictactoe.controllers.Logic;
 import usantatecla.tictactoe.views.Message;
 import usantatecla.utils.LimitedIntDialog;
 
 class StartView {
 
-    private StartController startController;
+    private Logic logic;
 
-    StartView(StartController startController) {
-        assert startController != null;
+    StartView(Logic logic) {
+        assert logic != null;
 
-        this.startController = startController;
+        this.logic = logic;
     }
 
     void interact() {
         Message.TITLE.writeln();
         int users = new LimitedIntDialog(0,
-                this.startController.getMaxPlayers()).read(Message.NUMBER_PLAYERS.toString());
-        this.startController.setUsers(users);
-        new GameView(startController).write();
+                this.logic.getMaxPlayers()).read(Message.NUMBER_PLAYERS.toString());
+        this.logic.setUsers(users);
+        new GameView(logic).write();
     }
 
 }

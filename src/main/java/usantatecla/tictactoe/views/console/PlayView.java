@@ -1,41 +1,41 @@
 package usantatecla.tictactoe.views.console;
 
-import usantatecla.tictactoe.controllers.PlayController;
+import usantatecla.tictactoe.controllers.Logic;
 import usantatecla.tictactoe.types.Error;
 import usantatecla.tictactoe.views.Message;
 
 class PlayView {
 
-    private PlayController playController;
+    private Logic logic;
 
-    PlayView(PlayController playController) {
-        this.playController = playController;
+    PlayView(Logic logic) {
+        this.logic = logic;
     }
 
     void interact() {
         do {
-            if (!this.playController.isBoardComplete()) {
+            if (!this.logic.isBoardComplete()) {
                 this.put();
             } else {
                 this.move();
             }
-            new GameView(this.playController).write();
-        } while (!this.playController.isTicTacToe());
-        new TokenView(this.playController.getToken()).write();
+            new GameView(this.logic).write();
+        } while (!this.logic.isTicTacToe());
+        new TokenView(this.logic.getToken()).write();
         Message.PLAYER_WIN.writeln();
     }
 
     private void put() {
-        boolean isUser = this.playController.isUser();
+        boolean isUser = this.logic.isUser();
         int[] coordinate;
         Error error;
         do {
             if (isUser) {
-                coordinate = new CoordinateView(this.playController).read(Message.COORDINATE_TO_PUT.toString());
+                coordinate = new CoordinateView(this.logic).read(Message.COORDINATE_TO_PUT.toString());
             } else {
-                coordinate = this.playController.getRandomCoordinate();
+                coordinate = this.logic.getRandomCoordinate();
             }
-            error = this.playController.put(coordinate);
+            error = this.logic.put(coordinate);
             if (isUser) {
                 new ErrorView(error).writeln();
             }
@@ -43,19 +43,19 @@ class PlayView {
     }
 
     private void move() {
-        boolean isUser = this.playController.isUser();
+        boolean isUser = this.logic.isUser();
         int[] origin;
         int[] target;
         Error error;
         do {
             if (isUser) {
-                origin = new CoordinateView(this.playController).read(Message.COORDINATE_TO_REMOVE.toString());
-                target = new CoordinateView(this.playController).read(Message.COORDINATE_TO_MOVE.toString());
+                origin = new CoordinateView(this.logic).read(Message.COORDINATE_TO_REMOVE.toString());
+                target = new CoordinateView(this.logic).read(Message.COORDINATE_TO_MOVE.toString());
             } else {
-                origin = this.playController.getRandomCoordinate();
-                target = this.playController.getRandomCoordinate();
+                origin = this.logic.getRandomCoordinate();
+                target = this.logic.getRandomCoordinate();
             }
-            error = this.playController.move(origin, target);
+            error = this.logic.move(origin, target);
             if (isUser) {
                 new ErrorView(error).writeln();
             }

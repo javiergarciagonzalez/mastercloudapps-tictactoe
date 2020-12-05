@@ -1,21 +1,21 @@
 package usantatecla.tictactoe.views.console;
 
-import usantatecla.tictactoe.controllers.ResumeController;
+import usantatecla.tictactoe.controllers.Logic;
 import usantatecla.tictactoe.views.Message;
 import usantatecla.utils.YesNoDialog;
 
 class ResumeView {
 
-    private ResumeController resumeController;
+    private Logic logic;
 
-    public ResumeView(ResumeController resumeController) {
-        this.resumeController = resumeController;
+    public ResumeView(Logic logic) {
+        this.logic = logic;
     }
 
     boolean interact() {
         boolean isResumed = new YesNoDialog().read(Message.RESUME.toString());
         if (isResumed) {
-            this.resumeController.reset();
+            this.logic.reset();
         }
         return isResumed;
     }

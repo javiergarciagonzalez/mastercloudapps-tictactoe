@@ -1,15 +1,15 @@
 package usantatecla.tictactoe.views.console;
 
-import usantatecla.tictactoe.controllers.PlayController;
+import usantatecla.tictactoe.controllers.Logic;
 import usantatecla.tictactoe.types.Error;
 import usantatecla.utils.Console;
 
 public class CoordinateView {
 
-    PlayController playController;
+    private Logic logic;
 
-    public CoordinateView(PlayController playController) {
-        this.playController = playController;
+    public CoordinateView(Logic logic) {
+        this.logic = logic;
     }
 
     public int[] read(String title) {
@@ -20,7 +20,7 @@ public class CoordinateView {
             console.writeln(title);
             coordinate[0] = (console.readInt("Row: ") - 1);
             coordinate[1] = (console.readInt("Column: ") - 1);
-            error = this.playController.isValidCoordinate(coordinate);
+            error = this.logic.isValidCoordinate(coordinate);
             new ErrorView(error).writeln();
         } while (!error.isNull());
         return coordinate;
