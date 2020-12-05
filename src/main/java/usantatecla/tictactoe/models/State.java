@@ -11,9 +11,11 @@ public class State {
     }
 
     public void next() {
+        this.stateValue = StateValue.values()[this.stateValue.ordinal()+1];
     }
 
     public void reset() {
+        this.stateValue = StateValue.INITIAL;
     }
 
     public StateValue getValueState() {
