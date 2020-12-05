@@ -1,6 +1,7 @@
 package usantatecla.tictactoe.controllers;
 
 import usantatecla.tictactoe.models.GameBuilder;
+import usantatecla.tictactoe.models.State;
 import usantatecla.tictactoe.types.Error;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +14,7 @@ public class PlayControllerTest {
 
     @BeforeEach
     void before() {
-        this.playController = new PlayController(new GameBuilder().build());
+        this.playController = new PlayController(new GameBuilder().build(), new State());
     }
 
     @Test

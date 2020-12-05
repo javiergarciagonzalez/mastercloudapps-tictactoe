@@ -2,14 +2,14 @@ package usantatecla.tictactoe.controllers;
 
 import usantatecla.tictactoe.models.Coordinate;
 import usantatecla.tictactoe.models.Game;
-import usantatecla.tictactoe.types.Token;
+import usantatecla.tictactoe.models.State;
 import usantatecla.tictactoe.types.Error;
 import usantatecla.utils.ClosedInterval;
 
 public class PlayController extends Controller {
 
-    public PlayController(Game game) {
-        super(game);
+    public PlayController(Game game, State state) {
+        super(game, state);
     }
 
     public boolean isBoardComplete() {
@@ -18,10 +18,6 @@ public class PlayController extends Controller {
 
     public boolean isTicTacToe() {
         return this.game.isTicTacToe();
-    }
-
-    public Token getToken() {
-        return this.game.getToken();
     }
 
     public boolean isUser() {
