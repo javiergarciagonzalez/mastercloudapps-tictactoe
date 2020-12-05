@@ -64,7 +64,7 @@ public class Logic {
     }
 
     public void reset() {
-        this.resumeController.resume();
+        this.resumeController.reset();
     }
 
 }
