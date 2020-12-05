@@ -1,9 +1,13 @@
 package usantatecla.tictactoe.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import usantatecla.tictactoe.models.Coordinate;
 import usantatecla.tictactoe.models.Game;
 import usantatecla.tictactoe.models.State;
 import usantatecla.tictactoe.types.Error;
+import usantatecla.tictactoe.types.StateValue;
 import usantatecla.tictactoe.types.Token;
 
 public class Logic {
@@ -13,10 +17,18 @@ public class Logic {
     private StartController startController;
     private PlayController playController;
     private ResumeController resumeController;
+    private Map<StateValue, Controller> controllers;
 
     public Logic() {
         this.game = new Game();
         this.state = new State();
+        this.controllers = new HashMap<StateValue, Controller>();
+        this.controllers.put(StateValue.INITIAL, new StartController(this.game, this.state));
+        this.controllers.put(StateValue.IN_GAME, new PlayController(this.game, this.state));
+        this.controllers.put(StateValue.RESUME, new ResumeController(this.game, this.state));
+        this.controllers.put(StateValue.EXIT, null);
+
+
         this.startController = new StartController(this.game, this.state);
         this.playController = new PlayController(this.game, this.state);
         this.resumeController = new ResumeController(this.game, this.state);
