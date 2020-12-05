@@ -3,7 +3,6 @@ package usantatecla.tictactoe.types;
 import usantatecla.utils.ClosedInterval;
 
 public enum Token {
-
     X,
     O,
     NULL;
@@ -20,8 +19,10 @@ public enum Token {
 
     @Override
     public String toString() {
-        if (this == NULL) {
+        if (this == Token.NULL) {
             return " ";
-        } else return this.name();
+        }
+
+        return this.name();
     }
 }
