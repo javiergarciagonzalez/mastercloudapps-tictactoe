@@ -7,6 +7,7 @@ public class Game {
 
     private Board board;
     private Turn turn;
+    private Player[] players;
 
     public Game() {
         this.reset();
@@ -15,7 +16,18 @@ public class Game {
     public void reset() {
         this.board = new Board();
         this.turn = new Turn(this.board);
+        this.players = new Player[Turn.NUMBER_PLAYERS];
     }
+
+    public void createPlayers(int users) {
+        for (int i = 0; i < users; i++) {
+            this.players[i] = new Player(Token.values()[i], this.board);
+        }
+        for (int i = users; i < Turn.NUMBER_PLAYERS; i++) {
+            this.players[i] = new Player(Token.values()[i], this.board);
+        }
+    }
+
 
     public void setUsers(int users) {
         this.turn.setUsers(users);

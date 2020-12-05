@@ -17,4 +17,16 @@ public class StartController extends Controller {
         return this.game.getMaxPlayers();
     }
 
+    public void start() {
+        this.state.next();
+    }
+
+    public void createPlayers(int numberOfUsers) {
+        this.game.createPlayers(numberOfUsers);
+    }
+
+    public void accept(ControllersVisitor controllersVisitor) {
+        controllersVisitor.visit(this);
+    }
+
 }

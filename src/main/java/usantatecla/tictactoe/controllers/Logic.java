@@ -28,19 +28,10 @@ public class Logic {
         this.controllers.put(StateValue.RESUME, new ResumeController(this.game, this.state));
         this.controllers.put(StateValue.EXIT, null);
 
-
-        this.startController = new StartController(this.game, this.state);
         this.playController = new PlayController(this.game, this.state);
         this.resumeController = new ResumeController(this.game, this.state);
     }
 
-    public int getMaxPlayers() {
-        return this.startController.getMaxPlayers();
-    }
-
-    public void setUsers(int users) {
-        this.startController.setUsers(users);
-    }
 
     public Token getToken() {
         return this.playController.getToken();

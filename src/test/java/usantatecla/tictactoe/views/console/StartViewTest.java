@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.tictactoe.controllers.Logic;
+import usantatecla.tictactoe.controllers.StartController;
 import usantatecla.tictactoe.models.Coordinate;
 import usantatecla.tictactoe.types.Token;
 import usantatecla.tictactoe.views.Message;
@@ -22,6 +23,9 @@ public class StartViewTest {
 
     @Mock
     private Logic logic;
+
+    @Mock
+    private StartController startController;
 
     @InjectMocks
     private StartView startView;
@@ -41,7 +45,7 @@ public class StartViewTest {
             when(this.logic.getMaxPlayers()).thenReturn(2);
             when(this.logic.getToken(any(Coordinate.class))).thenReturn(Token.X);
             console.when(Console::getInstance).thenReturn(this.console);
-            this.startView.interact();
+            this.startView.interact(startController);
             verify(this.console).writeln(Message.TITLE.toString());
             verify(this.logic).setUsers(1);
         }
