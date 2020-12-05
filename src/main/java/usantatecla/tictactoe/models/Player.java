@@ -25,12 +25,16 @@ class Player {
     }
 
     Error move(Coordinate origin, Coordinate target) {
+        assert origin != null && !origin.isNull();
+        assert target != null && !target.isNull();
+
         if (!this.board.isOccupied(origin, this.token)) {
             return Error.NOT_OWNER;
         }
         if (origin.equals(target)) {
             return Error.SAME_COORDINATES;
-        } else if (!this.board.isEmpty(target)) {
+        }
+        if (!this.board.isEmpty(target)) {
             return Error.NOT_EMPTY;
         }
         this.board.move(origin, target);
