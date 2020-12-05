@@ -2,21 +2,24 @@ package usantatecla.tictactoe.controllers;
 
 import usantatecla.tictactoe.models.Coordinate;
 import usantatecla.tictactoe.models.Game;
+import usantatecla.tictactoe.models.State;
 import usantatecla.tictactoe.types.Error;
 import usantatecla.tictactoe.types.Token;
 
 public class Logic {
 
     private Game game;
+    private State state;
     private StartController startController;
     private PlayController playController;
     private ResumeController resumeController;
 
     public Logic() {
         this.game = new Game();
-        this.startController = new StartController(this.game);
-        this.playController = new PlayController(this.game);
-        this.resumeController = new ResumeController(this.game);
+        this.state = new State();
+        this.startController = new StartController(this.game, this.state);
+        this.playController = new PlayController(this.game, this.state);
+        this.resumeController = new ResumeController(this.game, this.state);
     }
 
     public int getMaxPlayers() {
@@ -29,6 +32,10 @@ public class Logic {
 
     public Token getToken() {
         return this.playController.getToken();
+    }
+
+    public Token getToken(Coordinate coordinate) {
+        return this.playController.getToken(coordinate);
     }
 
     public boolean isBoardComplete() {
@@ -57,10 +64,6 @@ public class Logic {
 
     public Error move(int[] origin, int[] target) {
         return this.playController.move(origin, target);
-    }
-
-    public Token getToken(Coordinate coordinate) {
-        return this.playController.getToken(coordinate);
     }
 
     public void reset() {

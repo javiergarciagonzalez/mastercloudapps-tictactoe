@@ -4,6 +4,7 @@ import usantatecla.tictactoe.models.Coordinate;
 import usantatecla.tictactoe.models.Game;
 import usantatecla.tictactoe.models.State;
 import usantatecla.tictactoe.types.Error;
+import usantatecla.tictactoe.types.Token;
 import usantatecla.utils.ClosedInterval;
 
 public class PlayController extends Controller {
@@ -22,6 +23,14 @@ public class PlayController extends Controller {
 
     public boolean isUser() {
         return this.game.isUser();
+    }
+
+    public Token getToken() {
+        return this.game.getToken();
+    }
+
+    public Token getToken(Coordinate coordinate) {
+        return this.game.getToken(coordinate);
     }
 
     public Error isValidCoordinate(int[] coordinate) {
