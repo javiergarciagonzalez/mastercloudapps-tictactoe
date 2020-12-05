@@ -78,17 +78,13 @@ class Board {
         if (coordinates.size() < Coordinate.DIMENSION) {
             return false;
         }
-        Direction previous = null;
+
+        Direction[] directions = new Direction[Coordinate.DIMENSION - 1];
         for (int i = 0; i < Coordinate.DIMENSION - 1; i++) {
-            Direction actual = coordinates.get(i).getDirection(coordinates.get(i + 1));
-            if (i == 0) {
-                if (actual == Direction.NULL) {
-                    return false;
-                }
-            } else if (actual != previous) {
+            directions[i] = coordinates.get(i).getDirection(coordinates.get(i + 1));
+            if (directions[i] == Direction.NULL || i > 0 && directions[i - 1] != directions[i]) {
                 return false;
             }
-            previous = actual;
         }
         return true;
     }
