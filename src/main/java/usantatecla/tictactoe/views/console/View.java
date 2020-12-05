@@ -1,8 +1,6 @@
 package usantatecla.tictactoe.views.console;
 
-import usantatecla.tictactoe.controllers.PlayController;
-import usantatecla.tictactoe.controllers.ResumeController;
-import usantatecla.tictactoe.controllers.StartController;
+import usantatecla.tictactoe.controllers.Logic;
 
 public class View extends usantatecla.tictactoe.views.View {
 
@@ -10,10 +8,10 @@ public class View extends usantatecla.tictactoe.views.View {
     private PlayView playView;
     private ResumeView resumeView;
 
-    public View(StartController startController, PlayController playController, ResumeController resumeController) {
-        this.startView = new StartView(startController);
-        this.playView = new PlayView(playController);
-        this.resumeView = new ResumeView(resumeController);
+    public View(Logic logic) {
+        this.startView = new StartView(logic);
+        this.playView = new PlayView(logic);
+        this.resumeView = new ResumeView(logic);
     }
 
     @Override
