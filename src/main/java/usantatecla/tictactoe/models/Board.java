@@ -11,10 +11,6 @@ class Board {
     private Token[][] tokens;
 
     public Board() {
-        this.reset();
-    }
-
-    void reset() {
         this.tokens = new Token[Coordinate.DIMENSION][Coordinate.DIMENSION];
         for (int i = 0; i < Coordinate.DIMENSION; i++) {
             for (int j = 0; j < Coordinate.DIMENSION; j++) {
